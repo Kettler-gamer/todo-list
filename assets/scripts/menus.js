@@ -1,6 +1,6 @@
 function setMainMenu() {
   container.innerHTML = `
-    <img class="container-background" src="../assets/background-stars.jpg" alt="">
+    <img class="container-background" src="assets/background-stars.jpg" alt="">
       <div class="page-menu">
       
           <h2 class="menu-title">Todo List</h2>
