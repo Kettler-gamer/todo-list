@@ -5,30 +5,35 @@ function setMainMenu() {
       
           <h2 class="menu-title">Todo List</h2>
           <div class="menu-buttons">
-              <button onclick="setCreateTodoMenu()">Skapa Todo</button>
-              <button>Se Todos</button>
-              <button>Leta Todos</button>
+              <button class="button">Skapa Todo</button>
+              <button class="button">Se Todos</button>
+              <button class="button">Leta Todos</button>
           </div>
       </div>
       `;
+  const buttons = container.querySelectorAll("button");
+  buttons[0].addEventListener("click", () => {
+    container.style = "opacity: 0;";
+    setTimeout(setCreateTodoMenu, 150);
+  });
 }
 
 function setCreateTodoMenu() {
+  container.style = "opacity: 1;";
   const pageMenu = container.querySelector(".page-menu");
   pageMenu.innerHTML = `
-    <h2>Skapa todo</h2>
-    <input class="title-input"/>
-    <input class="content-input"/>
-    <input class="end-date-input"/>
-    <button>Skapa todo</button>
-    <button onclick="setMainMenu()">HuvudMeny</button>
+    <h2 class="menu-title">Skapa todo</h2>
+    <input placeholder="Title" class="title-input"/>
+    <textarea placeholder="Content" class="content-input"></textarea>
+    <input placeholder="End date" class="end-date-input"/>
+    <button class="button">Skapa todo</button>
+    <button class="button" onclick="setMainMenu()">HuvudMeny</button>
     `;
   pageMenu.querySelectorAll("button")[0].addEventListener("click", (event) => {
-    const inputs = event.currentTarget.parentElement.querySelectorAll("input");
     const todoItem = new TodoItem(
-      inputs[0].value,
-      inputs[1].value,
-      inputs[2].value
+      pageMenu.children[1].value,
+      pageMenu.children[2].value,
+      pageMenu.children[3].value
     );
     todoList.addTodoItem(todoItem);
   });
