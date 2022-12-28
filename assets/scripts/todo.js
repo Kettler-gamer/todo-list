@@ -1,9 +1,9 @@
 class TodoItem {
-  constructor() {
-    this.title = "Placeholder title...";
-    this.content = "Placeholder content...";
+  constructor(title, content, endDate) {
+    this.title = title;
+    this.content = content;
     this.startDate = new Date();
-    this.endDate = "End date not set";
+    this.endDate = endDate || "End date not set";
   }
 
   setDeadline(endDate) {
