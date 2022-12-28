@@ -1,0 +1,31 @@
+@use "../abstract/vars" as *;
+
+.page-menu{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    color: white;
+    background-color: $CBackgroundColor;
+    width: 80%;
+    margin: 8em auto;
+    padding: 2em 0 3em 0;
+    border-radius: 1em;
+    .menu-title{
+        text-align: center;
+    }
+    .menu-buttons{
+        border-radius: 1em;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: 1em auto;
+        padding:1em 0;
+        background-color: $CForegroundColor;
+        width: 50%;
+        button{
+            margin: 0.75em auto;
+            width: 80%;
+            height: 2.5em;
+        }
+    }
+}
