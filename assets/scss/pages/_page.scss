@@ -5,7 +5,7 @@
     flex-wrap: wrap;
     color: white;
     width: 80%;
-    margin: 4em auto;
+    margin: 2em auto;
     padding: 2em 0 3em 0;
     border-radius: 1em;
     //Landnings menyn
@@ -184,7 +184,7 @@ body, html{
 .see-todo-container {
     display: flex;
     flex-direction: column;
-    height: 120%;
+    height: 100%;
     overflow-y: scroll;
 }
 
@@ -278,9 +278,11 @@ body{
         flex-direction: row;
         flex-wrap: wrap;
         gap: 1em;
+        height: 25em;
     }
     .see-todo-items {
         flex: 0 0 30%;
+        height: 10em;
     }
     .language-flag {
         width: 7em;
@@ -294,6 +296,7 @@ body{
     }
     .page-menu {
         max-width: 1200px;
+        margin: 4em auto;
         .menu-buttons {
              button {
                 max-width: 7em;

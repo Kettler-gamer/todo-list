@@ -89,10 +89,18 @@ function setMainMenuClicks(buttons, clicks) {
 function setCompletedTodosMenu() {
   container.style = "opacity: 1;";
   const pageMenu = document.querySelector(".page-menu");
-  pageMenu.innerHTML = `
-  <h2 class="menu-title">Färdiga todos</h2>
-  <button class="button main-menu-btn">Huvudmeny</button>
-  `;
+  if(currentLanguage == "swedish") {
+    pageMenu.innerHTML = `
+    <h2 class="menu-title">Färdiga att göra</h2>
+    <button class="button main-menu-btn">Huvudmeny</button>
+    `;
+  } else if (currentLanguage == "english") {
+    pageMenu.innerHTML = `
+    <h2 class="menu-title">Completed todos</h2>
+    <button class="button main-menu-btn">Main Menu</button>
+    `;
+  }
+  
   pageMenu.querySelector("button").addEventListener("click", () => {
     container.style = "opacity: 0;";
     setTimeout(setMainMenu, 150);
@@ -113,14 +121,26 @@ function setCompletedTodosMenu() {
 function createCompletedTodoCard(parent, todo) {
   const todoCard = document.createElement("div");
   todoCard.className = "see-todo-items";
-  todoCard.innerHTML = `<span>
+  if(currentLanguage == "swedish") {
+    todoCard.innerHTML = `<span>
         ${todo.title}
         <button class="button delete">Radera</button>
       </span>
        <p class="todo-content">${todo.content}</p>
-       <p>${todo.startDate}</p>
-       <p>${todo.endDate}</p>
+       <p>Start datum: ${todo.startDate}</p>
+       <p>Slut datum: ${todo.endDate}</p>
        `;
+  } else if (currentLanguage == "english") {
+    todoCard.innerHTML = `<span>
+        ${todo.title}
+        <button class="button delete">Radera</button>
+      </span>
+       <p class="todo-content">${todo.content}</p>
+       <p>Start date: ${todo.startDate}</p>
+       <p>End date: ${todo.endDate}</p>
+       `;
+  }
+  
   todoCard.querySelector(".delete").addEventListener("click", (event) => {
     onDeleteClick(todo);
   });
@@ -327,14 +347,14 @@ function setSearchTodosMenu() {
     <button class="button main-menu-btn">Huvudmeny</button>
     <input class="search-box" placeholder="sök här..."/>
     <button class="button">Sök</button>
-    <div class="search-result"></div>
+    <div class="see-todo-container"></div>
     `;
   } if(currentLanguage == "english") {
     pageMenu.innerHTML = `
     <button class="button main-menu-btn">Main Menu</button>
     <input class="search-box" placeholder="Search here..."/>
     <button class="button">Search</button>
-    <div class="search-result"></div>
+    <div class="see-todo-container"></div>
     `;
   }
   
@@ -349,7 +369,7 @@ function setSearchTodosMenu() {
 function onSearchClick(event) {
   const pageMenu = event.currentTarget.parentElement;
   const searchQuery = pageMenu.querySelector(".search-box").value.toLowerCase();
-  const searchResult = pageMenu.querySelector(".search-result");
+  const searchResult = pageMenu.querySelector(".see-todo-container");
   const result = todoList.todos.filter(
     (element) =>
       element.title.toLowerCase().includes(searchQuery) ||
@@ -371,6 +391,7 @@ function onSearchClick(event) {
 function fillSearchResult(container, result) {
   for (let item of result) {
     const div = document.createElement("div");
+    div.className = "see-todo-items";
     if(currentLanguage == "swedish") {
         div.innerHTML = `
       <h2>${item.title}</h2>
