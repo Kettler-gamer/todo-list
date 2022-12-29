@@ -74,27 +74,34 @@ function setSearchTodosMenu() {
   container.style = "opacity: 1;";
   const pageMenu = document.querySelector(".page-menu");
   pageMenu.innerHTML = `
+  <button class="button main-menu-btn">Huvudmeny</button>
   <input class="search-box" placeholder="sök här..."/>
   <button class="button">Sök</button>
   <div class="search-result"></div>
   `;
-  pageMenu.querySelector("button").addEventListener("click", (event) => {
-    const pageMenu = event.currentTarget.parentElement;
-    const searchQuery = pageMenu
-      .querySelector(".search-box")
-      .value.toLowerCase();
-    const searchResult = pageMenu.querySelector(".search-result");
-    const result = todoList.todos.filter(
-      (element) =>
-        element.title.toLowerCase().includes(searchQuery) ||
-        element.content.toLowerCase().includes(searchQuery)
-    );
-    if (result.length > 0) {
-      fillSearchResult(searchResult, result);
-    } else {
-      searchResult.innerHTML = `<p>Inga träffar!</p>`;
-    }
+  const buttons = pageMenu.querySelectorAll("button");
+  buttons[1].addEventListener("click", onSearchClick);
+  buttons[0].addEventListener("click", (event) => {
+    container.style = "opacity: 0;";
+    setTimeout(setMainMenu, 150);
   });
+}
+
+function onSearchClick(event) {
+  const pageMenu = event.currentTarget.parentElement;
+  const searchQuery = pageMenu.querySelector(".search-box").value.toLowerCase();
+  const searchResult = pageMenu.querySelector(".search-result");
+  const result = todoList.todos.filter(
+    (element) =>
+      element.title.toLowerCase().includes(searchQuery) ||
+      element.content.toLowerCase().includes(searchQuery)
+  );
+  if (result.length > 0) {
+    searchResult.innerHTML = "";
+    fillSearchResult(searchResult, result);
+  } else {
+    searchResult.innerHTML = `<p>Inga träffar!</p>`;
+  }
 }
 
 function fillSearchResult(container, result) {
