@@ -43,10 +43,10 @@ function setCreateTodoMenu() {
     );
     todoList.addTodoItem(todoItem);
     console.table(todoList);
-    buttons[1].addEventListener("click", (event) => {
-      container.style = "opacity: 0;";
-      setTimeout(setMainMenu, 150);
-    });
+  });
+  buttons[1].addEventListener("click", (event) => {
+    container.style = "opacity: 0;";
+    setTimeout(setMainMenu, 150);
   });
 }
 
