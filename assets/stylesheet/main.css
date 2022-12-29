@@ -57,21 +57,18 @@ body, html {
   position: relative;
   overflow-x: hidden;
 }
-
-.container-background {
+.container .container-background {
   position: absolute;
   z-index: -1;
   width: 200%;
   height: 100%;
   opacity: 0.5;
 }
-
-.see-todo-container {
+.container .see-todo-container {
   display: flex;
   flex-direction: column;
 }
-
-.see-todo-items {
+.container .see-todo-items {
   display: flex;
   justify-content: space-between;
   border: 2px solid white;
@@ -81,50 +78,37 @@ body, html {
   margin-bottom: 1em;
   padding: 0.2em;
 }
-
-.checkbox {
+.container .checkbox {
   position: absolute;
   right: 0.5em;
   top: 0.5em;
   width: 2em;
   height: 2em;
 }
-
-.todo-content {
+.container .todo-content {
   max-width: 80%;
 }
 
+@media screen and (min-width: 768px) {
+  .container {
+    width: 60%;
+  }
+  .container .container-background {
+    width: 100%;
+  }
+  .container .see-todo-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+  }
+  .container .see-todo-items {
+    flex: 0 0 30%;
+  }
+  .page-menu .menu-buttons button {
+    max-width: 7em;
+  }
+}
 * {
   margin: 0;
   padding: 0;
-}
-
-body, html {
-  margin: 0px;
-  height: 100%;
-  overflow-y: hidden;
-  position: relative;
-}
-
-.canvas-background {
-  position: absolute;
-  top: 0;
-  z-index: -10;
-}
-
-.container {
-  display: flex;
-  color: white;
-  width: 80%;
-  height: 30em;
-  margin: 5em auto;
-  position: relative;
-  overflow-x: hidden;
-}
-
-.container-background {
-  position: absolute;
-  z-index: -1;
-  width: 200%;
-  height: 100%;
 }/*# sourceMappingURL=main.css.map */
