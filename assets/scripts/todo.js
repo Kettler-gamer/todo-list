@@ -55,6 +55,14 @@ class TodoList {
     return this.todos.filter((todo) => todo.title.includes(titleQuery));
   }
 
+  getTodosByCompleted() {
+    return this.todos.filter((todo) => todo.completed);
+  }
+
+  getTodosByNotCompleted() {
+    return this.todos.filter((todo) => !todo.completed);
+  }
+
   getTodosByRemainingTime(days) {
     return this.todos.filter((todo) => todo.getRemainingDays() <= days);
   }

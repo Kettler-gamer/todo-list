@@ -153,6 +153,13 @@ body, html {
   margin-bottom: 1em;
   padding: 0.2em;
 }
+.container .see-todo-items .delete {
+  position: absolute;
+  font-size: 1rem;
+  right: 0.5em;
+  width: 4em;
+  bottom: -0.25em;
+}
 .container .checkbox {
   position: absolute;
   right: 0.5em;

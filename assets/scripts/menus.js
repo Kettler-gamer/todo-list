@@ -20,18 +20,77 @@ function setMainMenu() {
       </div>
       `;
   const buttons = container.querySelectorAll("button");
-  buttons[0].addEventListener("click", () => {
+  setMainMenuClicks(buttons, [
+    setCreateTodoMenu,
+    seeTodos,
+    setSearchTodosMenu,
+    setCompletedTodosMenu,
+  ]);
+}
+
+function setMainMenuClicks(buttons, clicks) {
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", () => {
+      container.style = "opacity: 0;";
+      setTimeout(clicks[i], 150);
+    });
+  }
+}
+
+function setCompletedTodosMenu() {
+  container.style = "opacity: 1;";
+  const pageMenu = document.querySelector(".page-menu");
+  pageMenu.innerHTML = `
+  <h2 class="menu-title">Färdiga todos</h2>
+  <button class="button main-menu-btn">Huvudmeny</button>
+  `;
+  pageMenu.querySelector("button").addEventListener("click", () => {
     container.style = "opacity: 0;";
-    setTimeout(setCreateTodoMenu, 150);
+    setTimeout(setMainMenu, 150);
+  });
+  const filteredTodos = todoList.getTodosByCompleted();
+  console.log(filteredTodos);
+  if (filteredTodos.length > 0) {
+    const container = document.createElement("div");
+    container.className = "see-todo-container";
+    for (let todo of filteredTodos) {
+      createCompletedTodoCard(container, todo);
+    }
+    pageMenu.append(container);
+  } else {
+  }
+}
+
+function createCompletedTodoCard(parent, todo) {
+  const todoCard = document.createElement("div");
+  todoCard.className = "see-todo-items";
+  todoCard.innerHTML = `<span>
+        ${todo.title}
+        <button class="button delete">Radera</button>
+      </span>
+       <p class="todo-content">${todo.content}</p>
+       <p>${todo.startDate}</p>
+       <p>${todo.endDate}</p>
+       `;
+  todoCard.querySelector(".delete").addEventListener("click", (event) => {
+    onDeleteClick(todo);
+  });
+  parent.append(todoCard);
+}
+
+function onDeleteClick(todo) {
+  const pageMenu = document.querySelector(".page-menu");
+  const div = createConfirmMenu();
+  const buttons = div.querySelectorAll("button");
+  buttons[0].addEventListener("click", () => {
+    todoList.removeTodoItem(todo);
+    div.remove();
+    setCompletedTodosMenu();
   });
   buttons[1].addEventListener("click", () => {
-    container.style = "opacity: 0;";
-    setTimeout(seeTodos, 150);
+    div.remove();
   });
-  buttons[2].addEventListener("click", () => {
-    container.style = "opacity: 0;";
-    setTimeout(setSearchTodosMenu, 150);
-  });
+  pageMenu.append(div);
 }
 
 function setCreateTodoMenu() {
@@ -96,9 +155,7 @@ function seeTodos() {
   });
   const listContainer = document.createElement("div");
   listContainer.className = "see-todo-container";
-  const filteredTodos = todoList.todos.filter(
-    (item) => item.completed == false
-  );
+  const filteredTodos = todoList.getTodosByNotCompleted();
   if (filteredTodos.length > 0) {
     for (let i = 0; i < filteredTodos.length; i++) {
       const listItemContainer = document.createElement("div");
@@ -127,9 +184,7 @@ function seeTodos() {
   }
 }
 
-function onCheckClick(event, todoItem) {
-  const pageMenu = document.querySelector(".page-menu");
-  const checkbox = event.currentTarget;
+function createConfirmMenu() {
   const div = document.createElement("div");
   div.className = "confirm-menu";
   div.innerHTML = `
@@ -139,6 +194,13 @@ function onCheckClick(event, todoItem) {
     <button class="button">Nej</button>
   </div>
   `;
+  return div;
+}
+
+function onCheckClick(event, todoItem) {
+  const pageMenu = document.querySelector(".page-menu");
+  const checkbox = event.currentTarget;
+  const div = createConfirmMenu();
   const buttons = div.querySelectorAll(".button");
   buttons[0].addEventListener("click", () => {
     div.remove();
