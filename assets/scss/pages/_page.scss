@@ -139,6 +139,7 @@ body, html{
     margin: 5em auto;
     position: relative;
     overflow-x: hidden;
+    overflow-y: hidden;
 
     .language-flag {
         width: 5em;
@@ -183,6 +184,8 @@ body, html{
 .see-todo-container {
     display: flex;
     flex-direction: column;
+    height: 120%;
+    overflow-y: scroll;
 }
 
 .see-todo-items {
@@ -322,6 +325,4 @@ body{
             }
         }
     }
-    
-    
 }
