@@ -2,7 +2,7 @@ class TodoItem {
   constructor(title, content, endDate) {
     this.title = title;
     this.content = content;
-    this.startDate = new Date();
+    this.startDate = new Date().toDateString();
     this.endDate = endDate || "End date not set";
   }
 

@@ -1,4 +1,5 @@
 function setMainMenu() {
+  container.style = "opacity: 1;";
   container.innerHTML = `
     <img class="container-background" src="assets/background-stars.jpg" alt="">
       <div class="page-menu">
@@ -27,14 +28,19 @@ function setCreateTodoMenu() {
     <textarea placeholder="Content" class="content-input"></textarea>
     <input placeholder="End date" class="end-date-input"/>
     <button class="button">Skapa todo</button>
-    <button class="button" onclick="setMainMenu()">HuvudMeny</button>
+    <button class="button">HuvudMeny</button>
     `;
-  pageMenu.querySelectorAll("button")[0].addEventListener("click", (event) => {
+  const buttons = pageMenu.querySelectorAll("button");
+  buttons[0].addEventListener("click", (event) => {
     const todoItem = new TodoItem(
       pageMenu.children[1].value,
       pageMenu.children[2].value,
       pageMenu.children[3].value
     );
     todoList.addTodoItem(todoItem);
+  });
+  buttons[1].addEventListener("click", (event) => {
+    container.style = "opacity: 0;";
+    setTimeout(setMainMenu, 150);
   });
 }

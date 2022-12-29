@@ -38,7 +38,9 @@ function loop() {
   if (Math.random() < 1 / 60)
     fireworks.push(new Firework(Math.random() * (width - 200) + 100));
 }
-setInterval(loop, 1 / 60);
+setTimeout(() => {
+  setInterval(loop, 1 / 60);
+}, 50);
 // setInterval(loop, 100 / 60);
 class Particle {
   constructor(x, y, col) {
