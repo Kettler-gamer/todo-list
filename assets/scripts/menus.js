@@ -2,6 +2,7 @@ function setMainMenu() {
   container.style = "opacity: 1;";
   container.innerHTML = `
     <img class="container-background" src="assets/background-stars.webp" alt="">
+    <img class="rotating-stars" src="assets/test.webp" />
       <div class="page-menu">
       
           <h2 class="menu-title">Todo List</h2>
