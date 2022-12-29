@@ -37,6 +37,18 @@
     .content-input{
         height: 5em;
     }
+    .search-box{
+        background-color: $CBackgroundColor;
+        font-family: 'Lobster', cursive;
+        border-radius: 0.5em;
+        padding: 0.25em;
+        color: white;
+        height: 2em;
+        margin: 0 auto;
+    }
+    .button{
+        max-width: 8em;
+    }
 }
 
 .button{

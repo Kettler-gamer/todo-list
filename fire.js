@@ -39,9 +39,9 @@ function loop() {
     fireworks.push(new Firework(Math.random() * (width - 200) + 100));
 }
 setTimeout(() => {
-  setInterval(loop, 1 / 60);
+  setInterval(loop, 100 / 60);
 }, 50);
-// setInterval(loop, 100 / 60);
+
 class Particle {
   constructor(x, y, col) {
     this.x = x;
@@ -79,7 +79,7 @@ class Firework {
     this.y -= 3;
     if (this.y < 350 - Math.sqrt(Math.random() * 500) * 40) {
       this.isBlown = true;
-      for (let i = 0; i < 60; i++) {
+      for (let i = 0; i < 30; i++) {
         particles.push(new Particle(this.x, this.y, this.col));
       }
     }
@@ -95,21 +95,11 @@ class Firework {
 
 function randomCol() {
   var letter = "0123456789ABCDEF";
-  var nums = [];
-
-  for (var i = 0; i < 3; i++) {
-    nums[i] = Math.floor(Math.random() * 256);
-  }
-
-  let brightest = 0;
-  for (var i = 0; i < 3; i++) {
-    if (brightest < nums[i]) brightest = nums[i];
-  }
-
-  brightest /= 255;
-  for (var i = 0; i < 3; i++) {
-    nums[i] /= brightest;
-  }
+  var nums = [
+    Math.floor(Math.random() * 256),
+    Math.floor(Math.random() * 256),
+    Math.floor(Math.random() * 256),
+  ];
 
   let color = "#";
   for (var i = 0; i < 3; i++) {
@@ -120,7 +110,7 @@ function randomCol() {
 }
 
 function randomVec(max) {
-  let dir = Math.random() * Math.PI * 2;
+  let dir = Math.random() * 360;
   let spd = Math.random() * max;
   return { x: Math.cos(dir) * spd, y: Math.sin(dir) * spd };
 }
