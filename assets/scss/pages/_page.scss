@@ -90,16 +90,14 @@ body, html{
     margin: 5em auto;
     position: relative;
     overflow-x: hidden;
-}
 
-.container-background {
+    .container-background {
     position: absolute;
     z-index: -1;
     width: 200%;
     height: 100%;
     opacity: 0.5;
 }
-
 .see-todo-container {
     display: flex;
     flex-direction: column;
@@ -126,4 +124,56 @@ body, html{
 
 .todo-content {
     max-width: 80%;
+}
+}
+
+
+body{
+    overflow: hidden;
+}
+
+.rotating-stars{
+    position: absolute;
+    width: 350%;
+    left: -100%;
+    top: 0;
+    opacity: 0.5;
+    animation-name: rotation;
+    animation-timing-function: linear;
+    animation-duration: 150s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes rotation {
+    0%{transform: rotateZ(0);}
+    100%{transform: rotateZ(360deg);}
+}
+
+
+@media screen and (min-width: 768px) {
+    
+    .container {
+        width: 60%;
+        .container-background {
+        width: 100%;
+    }
+
+    .see-todo-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1em;
+    }
+    .see-todo-items {
+        flex: 0 0 30%;
+    }
+    }
+    .page-menu {
+        .menu-buttons {
+             button {
+        max-width: 7em;
+        }
+        }
+    }
+    
+    
 }

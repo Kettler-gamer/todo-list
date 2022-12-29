@@ -87,21 +87,18 @@ body, html {
   position: relative;
   overflow-x: hidden;
 }
-
-.container-background {
+.container .container-background {
   position: absolute;
   z-index: -1;
   width: 200%;
   height: 100%;
   opacity: 0.5;
 }
-
-.see-todo-container {
+.container .see-todo-container {
   display: flex;
   flex-direction: column;
 }
-
-.see-todo-items {
+.container .see-todo-items {
   display: flex;
   justify-content: space-between;
   border: 2px solid white;
@@ -111,22 +108,15 @@ body, html {
   margin-bottom: 1em;
   padding: 0.2em;
 }
-
-.checkbox {
+.container .checkbox {
   position: absolute;
   right: 0.5em;
   top: 0.5em;
   width: 2em;
   height: 2em;
 }
-
-.todo-content {
+.container .todo-content {
   max-width: 80%;
-}
-
-* {
-  margin: 0;
-  padding: 0;
 }
 
 body {
@@ -165,4 +155,27 @@ body {
   100% {
     transform: rotateZ(360deg);
   }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    width: 60%;
+  }
+  .container .container-background {
+    width: 100%;
+  }
+  .container .see-todo-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+  }
+  .container .see-todo-items {
+    flex: 0 0 30%;
+  }
+  .page-menu .menu-buttons button {
+    max-width: 7em;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
 }/*# sourceMappingURL=main.css.map */
