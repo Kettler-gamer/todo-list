@@ -1,3 +1,8 @@
+loadConfettiPreset(tsParticles);
+
+tsParticles.load("tsparticles", {
+  preset: "confetti",
+});
 function setMainMenu() {
   container.style = "opacity: 1;";
   container.innerHTML = `
@@ -35,9 +40,11 @@ function setCreateTodoMenu() {
     <input placeholder="End date" class="end-date-input"/>
     <div class="create-buttons-container">
     <button class="button">Skapa todo</button>
+    <div id="tsparticles"></div>
     <button class="button">HuvudMeny</button>
     </div>
     `;
+  
   const buttons = pageMenu.querySelectorAll("button");
   buttons[0].addEventListener("click", (event) => {
     const todoItem = new TodoItem(
@@ -47,7 +54,22 @@ function setCreateTodoMenu() {
       pageMenu.children[4].value
     );
     todoList.addTodoItem(todoItem);
-    console.table(todoList);
+    confetti("tsparticles", {
+      angle: 90,
+      count: 25,
+      position: { x: 50, y: 50 },
+      spread: 90,
+      startVelocity: 60,
+      decay: 0.9,
+      gravity: 1,
+      drift: 0,
+      ticks: 200,
+      colors: ["#fff", "#f00"],
+      shapes: ["square", "circle"],
+      scalar: 1,
+      zIndex: 2000,
+      disableForReducedMotion: true
+    });
   });
   buttons[1].addEventListener("click", (event) => {
     container.style = "opacity: 0;";
