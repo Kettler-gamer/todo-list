@@ -6,7 +6,7 @@
     flex-direction: column;
     color: white;
     width: 80%;
-    margin: 8em auto;
+    margin: 4em auto;
     padding: 2em 0 3em 0;
     border-radius: 1em;
     .menu-title{
@@ -67,4 +67,32 @@ body, html{
     width: 200%;
     height: 100%;
     opacity: 0.5;
+}
+
+.see-todo-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.see-todo-items {
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid white;
+    border-radius: 4px;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 1em;
+    padding: 0.2em;
+}
+
+.checkbox {
+    position: absolute;
+    right: 0.5em;
+    top: 0.5em;
+    width: 2em;
+    height: 2em;
+}
+
+.todo-content {
+    max-width: 80%;
 }

@@ -1,8 +1,8 @@
 class TodoItem {
-  constructor(title, content, endDate) {
+  constructor(title, content, startDate, endDate) {
     this.title = title;
     this.content = content;
-    this.startDate = new Date();
+    this.startDate = startDate;
     this.endDate = endDate || "End date not set";
   }
 

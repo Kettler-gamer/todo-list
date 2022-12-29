@@ -38,19 +38,24 @@ function onCreateTodoClick(event) {
 }
 
 
+
 function seeTodos() {
   const pageMenu = container.querySelector(".page-menu");
+  pageMenu.innerHTML = "";
   const listContainer = document.createElement("div");
+  listContainer.className = "see-todo-container"
   console.table(todoList)
   for (let i = 0; i < todoList.todos.length; i++) {
     const listItemContainer = document.createElement("div");
+    listItemContainer.className = "see-todo-items"
     listItemContainer.innerHTML = 
-    `<h1>${todoList.todos[i].title}<h1>
-     <p>${todoList.todos[i].content}</p>
+    `<label for="${i}">${todoList.todos[i].title}<input class="checkbox" id="${i}" type="checkbox"/></label>
+     <p class="todo-content">${todoList.todos[i].content}</p>
      <p>${todoList.todos[i].startDate}</p>
-     <p>${todoList.todos[i].endDate}</p>`;
+     <p>${todoList.todos[i].endDate}</p>
+     `;
 
      listContainer.append(listItemContainer);
   }
-  pageMenu.innerHTML = listContainer.innerHTML ;
+  pageMenu.append(listContainer);
 }
