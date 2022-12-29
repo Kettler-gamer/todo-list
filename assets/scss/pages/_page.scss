@@ -91,6 +91,12 @@
             }
         }
     }
+    // Se todos
+    .no-todos-text{
+        font-size: 2rem;
+        text-align: center;
+        width: 100%;
+    }
 }
 
 .button{
@@ -188,6 +194,27 @@ body{
     animation-iteration-count: infinite;
 }
 
+.confirm-menu{
+    font-size: 1.5rem;
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    top:0;
+    left: 0;
+    z-index: 15;
+    background-color: rgba(0, 0, 0, 0.705);
+    width: 50%;
+    padding: 40% 25% 100% 25%;
+    .buttons{
+        display: flex;
+        justify-content: space-between;
+        width: 75%;
+        max-width: 12em;
+    }
+}
+
 @keyframes rotation {
     0%{transform: rotateZ(0);}
     100%{transform: rotateZ(360deg);}
@@ -204,6 +231,7 @@ body{
     }
 
     .see-todo-container {
+        width: 100%;
         flex-direction: row;
         flex-wrap: wrap;
         gap: 1em;

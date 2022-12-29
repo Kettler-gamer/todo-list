@@ -4,6 +4,7 @@ class TodoItem {
     this.content = content;
     this.startDate = startDate;
     this.endDate = endDate || "End date not set";
+    this.completed = false;
   }
 
   setDeadline(endDate) {
@@ -36,6 +37,13 @@ class TodoList {
 
   addTodoItem(todoItem) {
     this.todos.push(todoItem);
+  }
+
+  removeTodoItem(todoItem) {
+    const index = this.todos.indexOf(todoItem);
+    if (index != -1) {
+      this.todos.splice(index, 1);
+    }
   }
 
   printTitles() {
