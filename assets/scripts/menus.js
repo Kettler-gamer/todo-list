@@ -97,8 +97,8 @@ function seeTodos() {
     listItemContainer.className = "see-todo-items";
     listItemContainer.innerHTML = `<label for="${i}">${todoList.todos[i].title}<input class="checkbox" id="${i}" type="checkbox"/></label>
      <p class="todo-content">${todoList.todos[i].content}</p>
-     <p>${todoList.todos[i].startDate}</p>
-     <p>${todoList.todos[i].endDate}</p>
+     <p>Start date: ${todoList.todos[i].startDate}</p>
+     <p>End date: ${todoList.todos[i].endDate}</p>
      `;
 
     listContainer.append(listItemContainer);
