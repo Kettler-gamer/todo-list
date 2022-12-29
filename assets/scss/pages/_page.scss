@@ -8,6 +8,7 @@
     margin: 4em auto;
     padding: 2em 0 3em 0;
     border-radius: 1em;
+    //Landnings menyn
     .menu-title{
         text-align: center;
         margin: 0 auto;
@@ -22,10 +23,11 @@
         padding:1em 0;
         width: 50%;
     }
-
+    //Skapa todos menyn
     .content-input,
     .title-input,
-    .end-date-input{
+    .end-date-input,
+    .start-date-input{
         background-color: $CBackgroundColor;
         border-radius: 0.5em;
         margin: 1em auto;
@@ -33,10 +35,21 @@
         font-family: 'Lobster', cursive;
         width: 75%;
         padding:0.5em;
+        border: 2px solid $CBorderColor;
     }
     .content-input{
         height: 5em;
     }
+    .create-buttons-container {
+        display: flex;
+        margin: 0 auto;
+        gap: 2em;
+
+        .button {
+            width: 10em;
+        }
+    }
+    //Sök todos menyn
     .search-box{
         background-color: $CBackgroundColor;
         font-family: 'Lobster', cursive;
@@ -60,6 +73,7 @@
     background-color: $CBackgroundColor;
     border-radius: 0.5em;
     cursor: pointer;
+    border: 2px solid $CBorderColor;
 }
 
 button:hover{

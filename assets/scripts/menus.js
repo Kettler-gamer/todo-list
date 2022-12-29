@@ -9,6 +9,7 @@ function setMainMenu() {
               <button class="button">Skapa Todo</button>
               <button class="button" onclick="seeTodos()">Se Todos</button>
               <button class="button">Leta Todos</button>
+              <button class="button">Färdiga Todos</button>
           </div>
       </div>
       `;
@@ -30,16 +31,20 @@ function setCreateTodoMenu() {
     <h2 class="menu-title">Skapa todo</h2>
     <input placeholder="Title" class="title-input"/>
     <textarea placeholder="Content" class="content-input"></textarea>
+    <input placeholder="Start date" class="start-date-input"/>
     <input placeholder="End date" class="end-date-input"/>
+    <div class="create-buttons-container">
     <button class="button">Skapa todo</button>
     <button class="button">HuvudMeny</button>
+    </div>
     `;
   const buttons = pageMenu.querySelectorAll("button");
   buttons[0].addEventListener("click", (event) => {
     const todoItem = new TodoItem(
       pageMenu.children[1].value,
       pageMenu.children[2].value,
-      pageMenu.children[3].value
+      pageMenu.children[3].value,
+      pageMenu.children[4].value
     );
     todoList.addTodoItem(todoItem);
     console.table(todoList);
@@ -52,7 +57,12 @@ function setCreateTodoMenu() {
 
 function seeTodos() {
   const pageMenu = container.querySelector(".page-menu");
-  pageMenu.innerHTML = "";
+  pageMenu.innerHTML = `<button class="button">Huvudmeny</button>`;
+  const button = pageMenu.querySelector(".button");
+  button.addEventListener("click", (event) => {
+    container.style = "opacity: 0;";
+    setTimeout(setMainMenu, 150);
+  });
   const listContainer = document.createElement("div");
   listContainer.className = "see-todo-container";
   console.table(todoList);

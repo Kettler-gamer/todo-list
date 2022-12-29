@@ -23,7 +23,8 @@
 }
 .page-menu .content-input,
 .page-menu .title-input,
-.page-menu .end-date-input {
+.page-menu .end-date-input,
+.page-menu .start-date-input {
   background-color: #1C1B49;
   border-radius: 0.5em;
   margin: 1em auto;
@@ -31,9 +32,18 @@
   font-family: "Lobster", cursive;
   width: 75%;
   padding: 0.5em;
+  border: 2px solid #C0C0C0;
 }
 .page-menu .content-input {
   height: 5em;
+}
+.page-menu .create-buttons-container {
+  display: flex;
+  margin: 0 auto;
+  gap: 2em;
+}
+.page-menu .create-buttons-container .button {
+  width: 10em;
 }
 .page-menu .search-box {
   background-color: #1C1B49;
@@ -57,6 +67,7 @@
   background-color: #1C1B49;
   border-radius: 0.5em;
   cursor: pointer;
+  border: 2px solid #C0C0C0;
 }
 
 button:hover {
