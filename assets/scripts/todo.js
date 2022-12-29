@@ -1,8 +1,8 @@
 class TodoItem {
   constructor(title, content, startDate, endDate) {
-    this.title = title;
-    this.content = content;
-    this.startDate = startDate;
+    this.title = title || "Title not set";
+    this.content = content || "No description";
+    this.startDate = startDate || "Start date not set";
     this.endDate = endDate || "End date not set";
     this.completed = false;
   }
