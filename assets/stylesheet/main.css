@@ -1,7 +1,6 @@
 .page-menu {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
   color: white;
   width: 80%;
   margin: 4em auto;
@@ -10,6 +9,8 @@
 }
 .page-menu .menu-title {
   text-align: center;
+  margin: 0 auto;
+  width: 100%;
 }
 .page-menu .menu-buttons {
   border-radius: 1em;
@@ -20,7 +21,34 @@
   padding: 1em 0;
   width: 50%;
 }
-.page-menu .menu-buttons button {
+.page-menu .content-input,
+.page-menu .title-input,
+.page-menu .end-date-input {
+  background-color: #1C1B49;
+  border-radius: 0.5em;
+  margin: 1em auto;
+  color: white;
+  font-family: "Lobster", cursive;
+  width: 75%;
+  padding: 0.5em;
+}
+.page-menu .content-input {
+  height: 5em;
+}
+.page-menu .search-box {
+  background-color: #1C1B49;
+  font-family: "Lobster", cursive;
+  border-radius: 0.5em;
+  padding: 0.25em;
+  color: white;
+  height: 2em;
+  margin: 0 auto;
+}
+.page-menu .button {
+  max-width: 8em;
+}
+
+.button {
   margin: 0.75em auto;
   width: 80%;
   height: 2.5em;
@@ -30,7 +58,8 @@
   border-radius: 0.5em;
   cursor: pointer;
 }
-.page-menu .menu-buttons button:hover {
+
+button:hover {
   background-color: #3B3A82;
 }
 
@@ -49,9 +78,10 @@ body, html {
 }
 
 .container {
+  transition: 0.15s opacity;
   display: flex;
   color: white;
-  width: 80%;
+  width: 100%;
   height: 30em;
   margin: 5em auto;
   position: relative;
@@ -99,32 +129,40 @@ body, html {
   padding: 0;
 }
 
-body, html {
-  margin: 0px;
-  height: 100%;
-  overflow-y: hidden;
-  position: relative;
+body {
+  overflow: hidden;
 }
 
-.canvas-background {
+.rotating-stars {
   position: absolute;
+  width: 350%;
+  left: -100%;
   top: 0;
-  z-index: -10;
+  opacity: 0.5;
+  -webkit-animation-name: rotation;
+          animation-name: rotation;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-duration: 150s;
+          animation-duration: 150s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
 }
 
-.container {
-  display: flex;
-  color: white;
-  width: 80%;
-  height: 30em;
-  margin: 5em auto;
-  position: relative;
-  overflow-x: hidden;
+@-webkit-keyframes rotation {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
 }
 
-.container-background {
-  position: absolute;
-  z-index: -1;
-  width: 200%;
-  height: 100%;
+@keyframes rotation {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
 }/*# sourceMappingURL=main.css.map */
