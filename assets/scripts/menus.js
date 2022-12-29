@@ -53,6 +53,9 @@ function setCreateTodoMenu() {
       pageMenu.children[3].value,
       pageMenu.children[4].value
     );
+    for (let i = 1; i < 5; i++) {
+      pageMenu.children[i].value = "";
+    }
     todoList.addTodoItem(todoItem);
     confetti("tsparticles", {
       angle: 90,
