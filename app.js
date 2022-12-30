@@ -10,8 +10,6 @@ todoList.addTodoItem(todoItem);
 todoList.addTodoItem(todoItem2);
 todoList.addTodoItem(todoItem3);
 
-console.table(todoList);
-
 (() => {
   setMainMenu();
 })();
@@ -49,5 +47,3 @@ testTodo = new TodoItem(
 );
 
 todoList.addTodoItem(testTodo);
-
-console.table(todoList);

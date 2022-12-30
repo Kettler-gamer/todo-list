@@ -23,10 +23,44 @@ class TodoItem {
   }
 
   getHtmlTemplate() {
+    const words = ["Start datum", "Slut datum", "Start date", "End date"];
+    const index = currentLanguage == "swedish" ? 0 : 2;
     return `
-    <h3>${this.title}</h3>
-    <p>${this.content}</p>
-    `;
+   <p class="todo-content">${this.content}</p>
+   <p>${words[index]}: ${this.startDate}</p>
+   <p>${words[index + 1]}: ${this.endDate}</p>
+   `;
+  }
+
+  createCompletedTodoCard(parent) {
+    const todoCard = document.createElement("div");
+    todoCard.className = "see-todo-items";
+    const word = currentLanguage == "swedish" ? "Radera" : "Delete";
+    todoCard.innerHTML = `<span>${this.title}</span>` + this.getHtmlTemplate();
+    const button = document.createElement("button");
+    button.textContent = word;
+    button.className = "button delete";
+    button.addEventListener("click", (event) => {
+      onDeleteClick(this);
+    });
+    todoCard.children[0].append(button);
+    parent.append(todoCard);
+  }
+
+  createTodoCard(parent) {
+    const todoCard = document.createElement("div");
+    todoCard.className = "see-todo-items";
+    todoCard.innerHTML =
+      `
+    <span>
+      ${this.title}
+      <input class="checkbox" type="checkbox"/>
+    </span>
+    ` + this.getHtmlTemplate();
+    todoCard.querySelector(".checkbox").addEventListener("click", (event) => {
+      onCheckClick(event, this);
+    });
+    parent.append(todoCard);
   }
 }
 
