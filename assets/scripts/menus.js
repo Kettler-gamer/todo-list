@@ -8,39 +8,34 @@ let currentLanguage = "english";
 
 function setMainMenu() {
   container.style = "opacity: 1;";
-  if (currentLanguage == "swedish") {
-    container.innerHTML = `
+  const words = [
+    "Att göra lista",
+    "Skapa Todo",
+    "Se Todos",
+    "Leta Todos",
+    "Färdiga Todos",
+    "Todo list",
+    "Create Todo",
+    "See todos",
+    "Search todos",
+    "Finished todos",
+  ];
+  const index = currentLanguage == "swedish" ? 0 : 5;
+  container.innerHTML = `
     <img class="container-background" src="assets/background-stars.webp" alt="">
     <img class="rotating-stars" src="assets/test.webp" />
     
       <div class="page-menu">
-      <img class="language-flag" src="assets/swedish.flag.png" />
-          <h2 class="menu-title">Att göra lista</h2>
+        <img class="language-flag" onclick="flagClick()" src="assets/${currentLanguage}.flag.png" />
+          <h2 class="menu-title">${words[index]}</h2>
           <div class="menu-buttons">
-              <button class="button">Skapa Todo</button>
-              <button class="button">Se Todos</button>
-              <button class="button">Leta Todos</button>
-              <button class="button">Färdiga Todos</button>
+              <button class="button">${words[index + 1]}</button>
+              <button class="button">${words[index + 2]}</button>
+              <button class="button">${words[index + 3]}</button>
+              <button class="button">${words[index + 4]}</button>
           </div>
       </div>
       `;
-  } else if (currentLanguage == "english") {
-    container.innerHTML = `
-    <img class="container-background" src="assets/background-stars.webp" alt="">
-    <img class="rotating-stars" src="assets/test.webp" />
-    
-      <div class="page-menu">
-        <img class="language-flag" src="assets/english.flag.png" />
-          <h2 class="menu-title">Todo list</h2>
-          <div class="menu-buttons">
-              <button class="button">Create Todo</button>
-              <button class="button">See todos</button>
-              <button class="button">Search todos</button>
-              <button class="button">Finished todos</button>
-          </div>
-      </div>
-      `;
-  }
 
   const buttons = container.querySelectorAll("button");
   setMainMenuClicks(buttons, [
@@ -49,32 +44,23 @@ function setMainMenu() {
     setSearchTodosMenu,
     setCompletedTodosMenu,
   ]);
-  const languageFlag = document.querySelector(".language-flag");
+}
 
-  languageFlag.addEventListener("click", () => {
-    const languageDiv = document.createElement("div");
-    languageDiv.className = "lang-select-container";
-    if (currentLanguage == "english") {
-      languageDiv.innerHTML = `
-      <h2 class="lang-select-title">Select your language</h2>
+function flagClick() {
+  const languageDiv = document.createElement("div");
+  languageDiv.className = "lang-select-container";
+  const word =
+    currentLanguage == "swedish" ? "Välj ditt språk" : "Select your language";
+  languageDiv.innerHTML = `
+      <h2 class="lang-select-title">${word}</h2>
         <div class="lang-select-flags">
             <img class="flag-img" src="assets/swedish.flag.png" />
             <img class="flag-img" src="assets/english.flag.png" />
         </div>
       `;
-    } else if (currentLanguage == "swedish") {
-      languageDiv.innerHTML = `
-      <h2 class="lang-select-title">Välj ditt språk</h2>
-        <div class="lang-select-flags">
-            <img class="flag-img" src="assets/swedish.flag.png" />
-            <img class="flag-img" src="assets/english.flag.png" />
-        </div>
-      `;
-    }
 
-    container.append(languageDiv);
-    setLanguage(languageDiv);
-  });
+  container.append(languageDiv);
+  setLanguage(languageDiv);
 }
 
 function setMainMenuClicks(buttons, clicks) {
@@ -126,8 +112,9 @@ function createNoTodosText(parent) {
   parent.append(text);
 }
 
-function onDeleteClick(todo) {
+function onDeleteClick(event, todo) {
   const pageMenu = document.querySelector(".page-menu");
+  const checkbox = event.currentTarget;
   const div = createConfirmMenu();
   const buttons = div.querySelectorAll("button");
   buttons[0].addEventListener("click", () => {
@@ -137,6 +124,7 @@ function onDeleteClick(todo) {
   });
   buttons[1].addEventListener("click", () => {
     div.remove();
+    // checkbox.checked = !checkbox.checked;
   });
   pageMenu.append(div);
 }
@@ -160,34 +148,35 @@ function setLanguage(container) {
 function setCreateTodoMenu() {
   container.style = "opacity: 1;";
   const pageMenu = container.querySelector(".page-menu");
-
-  if (currentLanguage == "swedish") {
-    pageMenu.innerHTML = `
-    <h2 class="menu-title">Skapa att göra</h2>
-    <input placeholder="Titel" class="title-input"/>
-    <textarea placeholder="Beskrivning" class="content-input"></textarea>
-    <input placeholder="Start datum" class="start-date-input"/>
-    <input placeholder="Slut datum" class="end-date-input"/>
+  const words = [
+    "Skapa att göra",
+    "Titel",
+    "Beskrivning",
+    "Start datum",
+    "Slut datum",
+    "Huvudmeny",
+    "Create todo",
+    "Title",
+    "Description",
+    "Start date",
+    "End date",
+    "Main Menu",
+  ];
+  const index = currentLanguage == "swedish" ? 0 : 6;
+  pageMenu.innerHTML = `
+    <h2 class="menu-title">${words[index]}</h2>
+    <input placeholder="${words[index + 1]}" class="title-input"/>
+    <textarea placeholder="${
+      words[index + 2]
+    }" class="content-input"></textarea>
+    <input placeholder="${words[index + 3]}" class="start-date-input"/>
+    <input placeholder="${words[index + 4]}" class="end-date-input"/>
     <div class="create-buttons-container">
-    <button class="button">Skapa att göra</button>
+    <button class="button">${words[index]}</button>
     <div id="tsparticles"></div>
-    <button class="button">Huvudmeny</button>
+    <button class="button">${words[index + 5]}</button>
     </div>
     `;
-  } else if (currentLanguage == "english") {
-    pageMenu.innerHTML = `
-    <h2 class="menu-title">Create todo</h2>
-    <input placeholder="Title" class="title-input"/>
-    <textarea placeholder="Description" class="content-input"></textarea>
-    <input placeholder="Start date" class="start-date-input"/>
-    <input placeholder="End date" class="end-date-input"/>
-    <div class="create-buttons-container">
-    <button class="button">Create todo</button>
-    <div id="tsparticles"></div>
-    <button class="button">Main Menu</button>
-    </div>
-    `;
-  }
 
   const buttons = pageMenu.querySelectorAll("button");
   buttons[0].addEventListener("click", (event) => {
@@ -239,7 +228,7 @@ function seeTodos() {
   const filteredTodos = todoList.getTodosByNotCompleted();
   if (filteredTodos.length > 0) {
     for (let i = 0; i < filteredTodos.length; i++) {
-      filteredTodos[i].createTodoCard(listContainer);
+      filteredTodos[i].createTodoCard(listContainer, seeTodos);
     }
     pageMenu.append(listContainer);
   } else {
@@ -262,25 +251,25 @@ function createConfirmMenu() {
   return div;
 }
 
-function onCheckClick(event, todoItem) {
+function onCheckClick(event, todoItem, refreshPage) {
   const pageMenu = document.querySelector(".page-menu");
   const checkbox = event.currentTarget;
   const div = createConfirmMenu();
   const buttons = div.querySelectorAll(".button");
   buttons[0].addEventListener("click", () => {
     div.remove();
-    onConfirmClick(todoItem);
+    onConfirmClick(todoItem, refreshPage);
   });
   buttons[1].addEventListener("click", () => {
     div.remove();
-    checkbox.checked = false;
+    checkbox.checked = !checkbox.checked;
   });
   pageMenu.before(div);
 }
 
-function onConfirmClick(todoItem) {
-  todoItem.completed = true;
-  seeTodos();
+function onConfirmClick(todoItem, refreshPage) {
+  todoItem.completed = !todoItem.completed;
+  refreshPage();
 }
 
 function setSearchTodosMenu() {
@@ -311,7 +300,7 @@ function setSearchTodosMenu() {
 }
 
 function onSearchClick(event) {
-  const pageMenu = event.currentTarget.parentElement;
+  const pageMenu = document.querySelector(".page-menu");
   const searchQuery = pageMenu.querySelector(".search-box").value.toLowerCase();
   const searchResult = pageMenu.querySelector(".see-todo-container");
   const result = todoList.todos.filter(
@@ -329,24 +318,6 @@ function onSearchClick(event) {
 
 function fillSearchResult(container, result) {
   for (let item of result) {
-    const div = document.createElement("div");
-    div.className = "see-todo-items";
-    if (currentLanguage == "swedish") {
-      div.innerHTML = `
-      <h2>${item.title}</h2>
-      <p>${item.content}</p>
-      <p>Start datum:${item.startDate}</p>
-      <p>Slut datum:${item.endDate}</p>
-      `;
-      container.append(div);
-    } else if (currentLanguage == "english") {
-      div.innerHTML = `
-      <h2>${item.title}</h2>
-      <p>${item.content}</p>
-      <p>Start date:${item.startDate}</p>
-      <p>End date:${item.endDate}</p>
-      `;
-      container.append(div);
-    }
+    item.createTodoCard(container, onSearchClick);
   }
 }

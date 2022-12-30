@@ -41,24 +41,24 @@ class TodoItem {
     button.textContent = word;
     button.className = "button delete";
     button.addEventListener("click", (event) => {
-      onDeleteClick(this);
+      onDeleteClick(event, this);
     });
     todoCard.children[0].append(button);
     parent.append(todoCard);
   }
 
-  createTodoCard(parent) {
+  createTodoCard(parent, refreshPage) {
     const todoCard = document.createElement("div");
     todoCard.className = "see-todo-items";
     todoCard.innerHTML =
       `
     <span>
       ${this.title}
-      <input class="checkbox" type="checkbox"/>
+      <input class="checkbox" type="checkbox" ${this.completed && "checked"}/>
     </span>
     ` + this.getHtmlTemplate();
     todoCard.querySelector(".checkbox").addEventListener("click", (event) => {
-      onCheckClick(event, this);
+      onCheckClick(event, this, refreshPage);
     });
     parent.append(todoCard);
   }
