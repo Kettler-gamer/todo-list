@@ -76,7 +76,7 @@ function setCompletedTodosMenu() {
   container.style = "opacity: 1;";
   const pageMenu = document.querySelector(".page-menu");
   const words = [
-    "Färdiga att göra",
+    "Färdiga todos",
     "Huvudmeny",
     "Completed todos",
     "Main Menu",
@@ -169,8 +169,8 @@ function setCreateTodoMenu() {
     <textarea placeholder="${
       words[index + 2]
     }" class="content-input"></textarea>
-    <input placeholder="${words[index + 3]}" class="start-date-input"/>
-    <input placeholder="${words[index + 4]}" class="end-date-input"/>
+    <input placeholder="${words[index + 3]} (yyyy-mm-dd)" class="start-date-input"/>
+    <input placeholder="${words[index + 4]} (yyyy-mm-dd)" class="end-date-input"/>
     <div class="create-buttons-container">
     <button class="button">${words[index]}</button>
     <div id="tsparticles"></div>
