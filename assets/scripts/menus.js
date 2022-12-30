@@ -90,7 +90,7 @@ function setCompletedTodosMenu() {
   container.style = "opacity: 1;";
   const pageMenu = document.querySelector(".page-menu");
   const words = [
-    "Färdiga att göra",
+    "Färdiga todos",
     "Huvudmeny",
     "Completed todos",
     "Main Menu",
@@ -163,13 +163,13 @@ function setCreateTodoMenu() {
 
   if (currentLanguage == "swedish") {
     pageMenu.innerHTML = `
-    <h2 class="menu-title">Skapa att göra</h2>
+    <h2 class="menu-title">Skapa todo</h2>
     <input placeholder="Titel" class="title-input"/>
     <textarea placeholder="Beskrivning" class="content-input"></textarea>
-    <input placeholder="Start datum" class="start-date-input"/>
-    <input placeholder="Slut datum" class="end-date-input"/>
+    <input placeholder="Start datum (yyyy-mm-dd)" class="start-date-input"/>
+    <input placeholder="Slut datum (yyyy-mm-dd)" class="end-date-input"/>
     <div class="create-buttons-container">
-    <button class="button">Skapa att göra</button>
+    <button class="button">Skapa todo</button>
     <div id="tsparticles"></div>
     <button class="button">Huvudmeny</button>
     </div>
@@ -179,8 +179,8 @@ function setCreateTodoMenu() {
     <h2 class="menu-title">Create todo</h2>
     <input placeholder="Title" class="title-input"/>
     <textarea placeholder="Description" class="content-input"></textarea>
-    <input placeholder="Start date" class="start-date-input"/>
-    <input placeholder="End date" class="end-date-input"/>
+    <input placeholder="Start date (yyyy-mm-dd)" class="start-date-input"/>
+    <input placeholder="End date (yyyy-mm-dd)" class="end-date-input"/>
     <div class="create-buttons-container">
     <button class="button">Create todo</button>
     <div id="tsparticles"></div>
