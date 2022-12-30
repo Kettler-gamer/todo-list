@@ -138,7 +138,7 @@ function onDeleteClick(todo) {
   buttons[1].addEventListener("click", () => {
     div.remove();
   });
-  pageMenu.append(div);
+  pageMenu.before(div);
 }
 
 function setLanguage(container) {
@@ -228,7 +228,7 @@ function seeTodos() {
   container.style = "opacity: 1;";
   const pageMenu = container.querySelector(".page-menu");
   const word = currentLanguage == "swedish" ? "Huvudmeny" : "Main Menu";
-  pageMenu.innerHTML = `<button class="button">${word}</button>`;
+  pageMenu.innerHTML = `<button class="button">${word}</button><div id="tsparticles"></div>`;
   const button = pageMenu.querySelector(".button");
   button.addEventListener("click", (event) => {
     container.style = "opacity: 0;";
@@ -270,6 +270,22 @@ function onCheckClick(event, todoItem) {
   buttons[0].addEventListener("click", () => {
     div.remove();
     onConfirmClick(todoItem);
+    confetti("tsparticles", {
+      angle: 90,
+      count: 25,
+      position: { x: 50, y: 50 },
+      spread: 90,
+      startVelocity: 60,
+      decay: 0.9,
+      gravity: 1,
+      drift: 0,
+      ticks: 200,
+      colors: ["#fff", "#f00"],
+      shapes: ["square", "circle"],
+      scalar: 1,
+      zIndex: 2000,
+      disableForReducedMotion: true,
+    });
   });
   buttons[1].addEventListener("click", () => {
     div.remove();

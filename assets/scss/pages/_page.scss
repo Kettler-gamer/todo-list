@@ -1,5 +1,6 @@
 @use "../abstract/vars" as *;
 
+
 .page-menu{
     display: flex;
     flex-wrap: wrap;
@@ -188,6 +189,9 @@ body, html{
     height: 100%;
     overflow-y: scroll;
 }
+.see-todo-container::-webkit-scrollbar{
+    display: none;
+  }
 
 .see-todo-items {
     display: flex;
